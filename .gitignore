@@ -39,6 +39,7 @@ videos/**/*.mp4
 videos/**/*.en.srt
 videos/**/*.he.srt
 videos/**/*.output.*
+videos/**/*.zip
 
 # Temporary files
 *.tmp
