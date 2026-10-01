@@ -1,0 +1,50 @@
+# Large model files (downloaded separately)
+models/
+*.bin
+*.pt
+
+# Build & PyInstaller artifacts
+build/
+release/
+dist/
+*.spec
+*.exe
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+.eggs/
+*.egg
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+
+# IDE & Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Test data (video files are large)
+videos/**/*.mp4
+videos/**/*.en.srt
+videos/**/*.he.srt
+videos/**/*.output.*
+
+# Temporary files
+*.tmp
+*.temp
+temp-preview/
+
+# OS
+Thumbs.db
+.DS_Store

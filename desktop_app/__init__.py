@@ -1,0 +1,1 @@
+"""Subtitle Studio desktop application package."""

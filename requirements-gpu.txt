@@ -1,0 +1,14 @@
+# GPU Support (Optional)
+# Install this for 10x+ faster transcription on NVIDIA GPUs
+
+# Replace torch with GPU variant (CUDA 12.1)
+torch==2.1.2+cu121
+torch-cuda==2.1.2
+
+# Then install other dependencies
+faster-whisper==1.0.3
+ctranslate2==4.5.0
+huggingface-hub==0.23.5
+
+# Installation:
+# pip install -r requirements-gpu.txt
