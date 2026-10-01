@@ -1,4 +1,4 @@
-# Whisper Studio
+# Subtitle Studio
 
 Professional subtitle editor and multilingual transcription tool. Edit timed SRT subtitles, render styled MP4 videos, and generate Hebrew transcripts from audio—all offline with speech-to-text technology powered by Whisper.
 
@@ -24,16 +24,14 @@ Professional subtitle editor and multilingual transcription tool. Edit timed SRT
 
 ### Download Release
 
-Download the latest release from the [Releases](../../releases) page:
-- **WhisperStudio.exe** – Standalone portable executable (no installation required)
+If a portable ZIP has been published, download it from the [Releases](../../releases) page. The executable is not stored in Git; to run a clone locally, follow [Clone & Install](#clone--install) instead.
 
 ### First Run
 
-1. Extract `WhisperStudio-portable.zip` to your desired location
-2. Run `WhisperStudio.exe` directly
-3. On first launch, the app will initialize its runtime
+1. Extract `SubtitleStudio-portable.zip` to your desired location
+2. Run `SubtitleStudio.exe` directly
 
-**No additional setup required** — all dependencies are bundled.
+The Hebrew transcription feature also requires the Ivrit model; see [Model Setup](#model-setup).
 
 ---
 
@@ -61,8 +59,8 @@ Download the latest release from the [Releases](../../releases) page:
 
 ```powershell
 # Clone repository
-git clone <repository-url>
-cd embed-english-srt
+git clone https://github.com/sharonzadok-svg/whisper-studio.git
+cd whisper-studio
 
 # Create virtual environment
 python -m venv .venv
@@ -135,7 +133,7 @@ ls models/ivrit-whisper/
 ## Project Structure
 
 ```
-embed-english-srt/
+whisper-studio/
 ├── desktop_app/              # Main application package
 │   ├── subtitle_studio.py    # Main UI window
 │   ├── media_service.py      # MP4 rendering & styling
@@ -169,7 +167,8 @@ embed-english-srt/
 - **Model files** (`models/` directory) — downloaded separately
 - **Build artifacts** (`build/`, `release/`)
 - **Cache & runtime** (`__pycache__/`, `.venv/`)
-- **Test videos** (`videos/` — use `.gitignore` to exclude)
+- **Local video projects** (`videos/` except `videos/README.md`)
+- **Salesforce CLI cache** (`.sf/`)
 - **IDE settings** (`.vscode/`, `.idea/`)
 
 ### .gitignore Configuration
@@ -191,18 +190,10 @@ __pycache__/
 .venv/
 dist/
 
-# Test data
-videos/**/*.mp4
-videos/**/*.en.srt
-```
-
-**Initialize git:**
-```powershell
-git init
-git add .
-git commit -m "Initial commit: Subtitle Studio application code"
-git remote add origin <your-repo-url>
-git push -u origin main
+# Local data
+videos/*
+!videos/README.md
+.sf/
 ```
 
 ---
@@ -250,7 +241,7 @@ python -m PyInstaller `
   --noconfirm `
   --onedir `
   --windowed `
-  --name WhisperStudio `
+   --name SubtitleStudio `
   --distpath release `
   --collect-all faster_whisper `
   --collect-all ctranslate2 `
@@ -259,7 +250,7 @@ python -m PyInstaller `
   subtitle_studio_launcher.py
 ```
 
-Output: `release/WhisperStudio/WhisperStudio.exe`
+Output: `release/SubtitleStudio/SubtitleStudio.exe` (local build; not committed to Git).
 
 ### Portable Distribution
 
@@ -270,7 +261,7 @@ To distribute as a ZIP archive:
 Compress-Archive -Path release/SubtitleStudio -DestinationPath SubtitleStudio-portable.zip
 ```
 
-**Note:** The model files are NOT included in the executable. Users must download them separately (see [Model Setup](#model-setup)).
+**Note:** This build command does not include the model files. For Hebrew transcription, download the model (see [Model Setup](#model-setup)) and place it in `release/SubtitleStudio/_internal/models/ivrit-whisper` before making the ZIP.
 
 ---
 
@@ -282,8 +273,8 @@ Compress-Archive -Path release/SubtitleStudio -DestinationPath SubtitleStudio-po
 
 **Solution**: Ensure you're running from the project root:
 ```powershell
-cd c:\Workspace\embed-english-srt
-python desktop_app/subtitle_studio.py
+cd whisper-studio
+python -m desktop_app.subtitle_studio
 ```
 
 ### FFmpeg Not Found

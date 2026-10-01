@@ -11,6 +11,7 @@ dist/
 *.exe
 
 # Python
+.env
 __pycache__/
 *.pyc
 *.pyo
@@ -29,17 +30,15 @@ env/
 # IDE & Editor
 .vscode/
 .idea/
+.sf/
 *.swp
 *.swo
 *~
 .DS_Store
 
-# Test data (video files are large)
-videos/**/*.mp4
-videos/**/*.en.srt
-videos/**/*.he.srt
-videos/**/*.output.*
-videos/**/*.zip
+# Local video projects (including generated transcripts)
+videos/*
+!videos/README.md
 
 # Temporary files
 *.tmp

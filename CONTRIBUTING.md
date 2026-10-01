@@ -117,4 +117,4 @@ If your changes reference models:
 
 ---
 
-Thank you for contributing to Whisper Studio! 🎬
+Thank you for contributing to Subtitle Studio! 🎬

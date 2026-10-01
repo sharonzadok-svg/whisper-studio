@@ -71,8 +71,8 @@ ffprobe -version
 cd C:\Workspace
 
 # Clone the repository
-git clone https://github.com/your-username/embed-english-srt.git
-cd embed-english-srt
+git clone https://github.com/sharonzadok-svg/whisper-studio.git
+cd whisper-studio
 ```
 
 ### Step 4: Create Virtual Environment
@@ -252,7 +252,7 @@ All checks should pass with ✅ status.
 
 ```powershell
 # From project root (virtual environment must be active)
-python desktop_app/subtitle_studio.py
+python -m desktop_app.subtitle_studio
 ```
 
 **Expected behavior:**

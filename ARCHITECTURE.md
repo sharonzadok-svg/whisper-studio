@@ -33,7 +33,7 @@ Subtitle Studio is a desktop application for subtitle editing and video renderin
 ## Directory Structure
 
 ```
-embed-english-srt/
+whisper-studio/
 ├── desktop_app/                      # Main application package
 │   ├── __init__.py                   # Package initialization
 │   ├── subtitle_studio.py            # UI & orchestration (main window)
@@ -426,24 +426,16 @@ See `.env.example` for all available options.
 
 ```bash
 git clone <repo>
-cd embed-english-srt
+cd whisper-studio
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 pip install -r requirements.txt
-python desktop_app/subtitle_studio.py
+python -m desktop_app.subtitle_studio
 ```
 
 ### Standalone Executable (Distribution)
 
-```bash
-python -m PyInstaller --onedir --windowed \
-    --collect-all faster_whisper --collect-all ctranslate2 \
-    --add-binary "ffmpeg.exe;ffmpeg" \
-    --add-binary "ffprobe.exe;ffmpeg" \
-    subtitle_studio_launcher.py
-```
-
-**Output**: `release/SubtitleStudio/SubtitleStudio.exe`
+See the [build instructions](README.md#building-standalone-executable). The local output is `release/SubtitleStudio/SubtitleStudio.exe`; it is not tracked in Git.
 
 ### Model Distribution
 
